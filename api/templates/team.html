@@ -4,9 +4,9 @@
 <body>
   <h2>팀원 구성 및 역할</h2>
   <ul>
-    <li>{{ data.member1 }}</li>
-    <li>{{ data.member2 }}</li>
-    <li>{{ data.member3 }}</li>
+    {% for key, value in data.items() %}
+      <li>{{ value }}</li>
+    {% endfor %}
   </ul>
   <p><a href="/">← 홈</a></p>
 </body></html>
