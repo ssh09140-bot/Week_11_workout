@@ -2,10 +2,10 @@ FROM python:3.11
 
 WORKDIR /app
 
-COPY api/requirements.txt /app/requirements.txt
+COPY requirements.txt .
 RUN pip install --no-cache-dir --trusted-host pypi.org --trusted-host files.pythonhosted.org -r /app/requirements.txt
 
-COPY api/ /app/
+COPY . /app/
 
 # TODO: Flask가 리슨하는 포트를 노출하세요 (예: 5000)
 EXPOSE 5000

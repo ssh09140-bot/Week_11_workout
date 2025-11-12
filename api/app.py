@@ -54,51 +54,43 @@ def get_page_data(page_name):
 def main_page():
     """ 메인 페이지 (index.html)를 렌더링합니다. """
     data = load_project_data()
-    # index.html에서 사용할 데이터를 data=data로 넘겨줍니다.
-    return render_template('index.html', data=data)
+    # 'main' 키의 값(객체)을 'data' 변수로 전달합니다.
+    return render_template('index.html', data=data.get('main'))
 
 @app.get("/team")
 def team_page():
-    """ 
-    팀 구성 및 역할 페이지 (team.html)를 렌더링합니다.
-    버튼을 누르면 이 함수가 호출됩니다.
-    """
+    """ 팀 구성 및 역할 페이지 (team.html)를 렌더링합니다. """
     data = load_project_data()
-    # team.html의 {% for member in data %} 루프에서 사용할
-    # 'data' 변수에 'team' 키의 값(List)을 전달합니다.
-    return render_template('team.html', data=data.get('team', []))
+    # 'team' 키의 값(객체)을 'data' 변수로 전달합니다. (기본값 [] -> {})
+    return render_template('team.html', data=data.get('team'))
 
 @app.get("/features")
 def features_page():
     """ 핵심 기능 페이지 (features.html)를 렌더링합니다. """
     data = load_project_data()
-    # features.html의 {% for f in data %} 루프를 위해
-    # 'data' 변수에 'features' 키의 값(List)을 전달합니다.
-    return render_template('features.html', data=data.get('features', []))
+    # 'features' 키의 값(객체)을 'data' 변수로 전달합니다. (기본값 [] -> {})
+    return render_template('features.html', data=data.get('features'))
 
 @app.get("/subject")
 def subject_page():
-    """ 핵심 기능 페이지 (features.html)를 렌더링합니다. """
+    """ 작품주제 페이지 (subject.html)를 렌더링합니다. """
     data = load_project_data()
-    # features.html의 {% for f in data %} 루프를 위해
-    # 'data' 변수에 'features' 키의 값(List)을 전달합니다.
-    return render_template('subject.html', data=data.get('subject', []))
+    # 'subject' 키의 값(객체)을 'data' 변수로 전달합니다. (기본값 [] -> {})
+    return render_template('subject.html', data=data.get('subject'))
 
 @app.get("/rationale")
 def rationale_page():
-    """ 핵심 기능 페이지 (features.html)를 렌더링합니다. """
+    """ 실용적 근거 페이지 (rationale.html)를 렌더링합니다. """
     data = load_project_data()
-    # features.html의 {% for f in data %} 루프를 위해
-    # 'data' 변수에 'features' 키의 값(List)을 전달합니다.
-    return render_template('rationale.html', data=data.get('rationale', []))
+    # 'rationale' 키의 값(객체)을 'data' 변수로 전달합니다. (기본값 [] -> {})
+    return render_template('rationale.html', data=data.get('rationale'))
 
 @app.get("/environment")
 def environment_page():
-    """ 핵심 기능 페이지 (features.html)를 렌더링합니다. """
+    """ 구현 환경 페이지 (environment.html)를 렌더링합니다. """
     data = load_project_data()
-    # features.html의 {% for f in data %} 루프를 위해
-    # 'data' 변수에 'features' 키의 값(List)을 전달합니다.
-    return render_template('environment.html', data=data.get('environment', []))
+    # 'environment' 키의 값(객체)을 'data' 변수로 전달합니다. (기본값 [] -> {})
+    return render_template('environment.html', data=data.get('environment'))
 
 @app.get("/api/health")
 def health():
