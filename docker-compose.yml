@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  
+
+  web:
+    build: .
+    # api가 준비된 뒤 시작하도록 depends_on/healthcheck 구성 가능
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
