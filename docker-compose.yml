@@ -1,16 +1,15 @@
-services:
-  api:
-    build: ./api
-    volumes:
-      - ./data:/app/data
-    # 필요시 헬스체크 추가
-    # expose:
-    #   - "5000"
+# docker-compose.yml
+version: '3.8'
 
+services:
+  # 'web' 이라는 이름의 서비스 정의 (이름은 자유)
   web:
-    image: nginx:1.25
-    # api가 준비된 뒤 시작하도록 depends_on/healthcheck 구성 가능
+    # 현재 폴더의 Dockerfile을 사용하여 이미지 빌드
+    build: .
+    # 컨테이너 포트 5000번을 호스트(내 PC) 포트 5000번에 연결
+    # (예시 링크의 포트 5000번 참고) [cite: 17]
     ports:
-      - "8080:8080"
+      - "5001:5000"
+    # 컨테이너 내의 /app 디렉토리와 현재 폴더를 연결 (코드 수정 시 자동 반영)
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - .:/app
